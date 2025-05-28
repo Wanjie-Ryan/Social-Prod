@@ -25,4 +25,4 @@
 3. Storage
 -- Abstracts communication btn the layers above, and the DB 
 
-![alt text](image.png)
+![alt text](image-1.png)
