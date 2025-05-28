@@ -15,3 +15,14 @@
 -- Organize code in a modular and flexible way, so as it can be easy to introduce new features.
 4. Business value
 -- Focus on delivering value to your users.
+
+
+**** LAYERS ****
+1. Transport Layer 
+-- Way data is transmitted to the users --> HTTP
+2. Service Layer
+-- B/S logic
+3. Storage
+-- Abstracts communication btn the layers above, and the DB 
+
+![alt text](image.png)
