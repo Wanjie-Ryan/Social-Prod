@@ -6,23 +6,51 @@
 --> docs will contain swagger related code
 --> scripts
 
-***** PRINCIPLES ****
+**\*** PRINCIPLES \*\*\*\*
+
 1. Separation of concerns
--- Each level in your program should be separate by a clear barrier.
+   -- Each level in your program should be separate by a clear barrier.
 2. Dependency Inversion Principle
--- Inject dependencies in your layers, you don't directly call them.
+   -- Inject dependencies in your layers, you don't directly call them.
 3. Adapatablitity to change
--- Organize code in a modular and flexible way, so as it can be easy to introduce new features.
+   -- Organize code in a modular and flexible way, so as it can be easy to introduce new features.
 4. Business value
--- Focus on delivering value to your users.
+   -- Focus on delivering value to your users.
 
+\***\* LAYERS \*\***
 
-**** LAYERS ****
-1. Transport Layer 
--- Way data is transmitted to the users --> HTTP
+1. Transport Layer
+   -- Way data is transmitted to the users --> HTTP
 2. Service Layer
--- B/S logic
+   -- B/S logic
 3. Storage
--- Abstracts communication btn the layers above, and the DB 
+   -- Abstracts communication btn the layers above, and the DB
 
 ![alt text](image-1.png)
+
+**\*** POINTERS \*\*\*\*
+Pointer --> Variable that stores the memory address of another variable.
+-- Instead of holding a direct value like an int or string, a pointer holds the location where that value is.
+
+\***\* WHY USE POINTERS \*\***
+
+1. Efficiency
+   -- When you pass large structs or data to functions, passing a pointer means you only pass the memory address, not a copy of the entire data. This saves memory and CPU time.
+
+2. Mutability
+   -- Passing pointers to functions modify the original data.
+
+& (address of) --> Give me the address of the variable in memory.
+-- it returns a pointer to the variable
+x :=10
+p := &x --> p is a pointer to x, holds x memory address
+fm.Println(x) --> 10
+fm.Println(p) --> something like 0xcfgh5748b0 - memory address of x
+
+- (dereference) --> Go to the address stored in this pointer and get the value there.
+  -- it accesses or changes the value that the pointer points to.
+  x := 10
+  p :=&x --> p points to x
+  fmt.Println(*p) --> 10 - dereference p to get x's value
+  *p = 20 // change the value at the address p points to
+  fmt.Println(x) --> 20 - x was updated via the pointer.
