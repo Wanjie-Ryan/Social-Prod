@@ -1,6 +1,10 @@
 package main
 
-import "net/http"
+import (
+	"log"
+	"net/http"
+	"time"
+)
 
 // define a new type called application that holds a field config of type config.
 type application struct {
@@ -8,24 +12,39 @@ type application struct {
 }
 
 type config struct {
-	addr string
+	addr string 
+}
+
+func (app *application) mount() *http.ServeMux {
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /v1/healthcheck", app.healthCheck)
+	return mux
+
 }
 
 // method for the application struct
 // starts the HTTP server
 // the app *application is a pointer receiver.
 // without the * its a value receiver and that way, Go would nt be able to modify the application instance
-// the rror comes from an interface, built in
-func (app *application) run() error {
+// the error comes from an interface, built in
+func (app *application) run(mux *http.ServeMux) error {
 	//mux is your router that handles incoming HTTP requests, and decides which handler function should process them.
 	// creates a new, default router
-	mux := http.NewServeMux()
+	// mux := http.NewServeMux()
 	// srv is  apointer to the server. We use a pointer so we can pass it around and modify the server later if needed.
 	srv := &http.Server{
 		Addr:    app.config.addr,
 		Handler: mux,
+		// if the server takes more than 30 seconds to write a response to the client, it will timeout
+		WriteTimeout: time.Second * 30,
+		// if the server takes more than 10 seconds to read a request from the client, it will timeout
+		ReadTimeout: time.Second * 10,
+		IdleTimeout: time.Minute,
 	}
 
+	// %s means insert a string here
+	log.Printf("Server started on %s", app.config.addr)
 	// starts the HTTP server and listens for incoming requests on the configured address.
 	return srv.ListenAndServe()
 }
