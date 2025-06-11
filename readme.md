@@ -54,3 +54,14 @@ fm.Println(p) --> something like 0xcfgh5748b0 - memory address of x
   fmt.Println(*p) --> 10 - dereference p to get x's value
   *p = 20 // change the value at the address p points to
   fmt.Println(x) --> 20 - x was updated via the pointer.
+
+
+Go-Chi
+Lightweight, Idiomatic HTTP router and middleware stack for Go, like Express in node.
+--> Quickly define routes, mount sub-routers, and apply middlewares
+
+Air -- air-verse
+hot reload tool in go
+
+go install github.com/air-verse/air@latest
+air init
