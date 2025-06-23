@@ -27,7 +27,7 @@ func (app *application) mount() http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.RealIP)
-	r.Use(middleware.Recoverer)
+	r.Use(middleware.Recoverer) // recover from a panic
 	r.Use(middleware.Logger)
 
 	// set a timeout value on the request that will signal through ctx.Done() that the request has timed out and further processing should be stopped.
