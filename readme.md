@@ -65,3 +65,7 @@ hot reload tool in go
 
 go install github.com/air-verse/air@latest
 air init
+
+
+direnv is a little program that hooks into your shell and automatically loads or unloads environment variables when you cd into (or out of) a project director
+create a .envrc file
