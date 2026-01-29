@@ -6,7 +6,7 @@
 --> docs will contain swagger related code
 --> scripts
 
-**\*** PRINCIPLES \*\*\*\*
+**\*** PRINCIPLES \*\*\*
 
 1. Separation of concerns
    -- Each level in your program should be separate by a clear barrier.
